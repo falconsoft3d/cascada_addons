@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="crm_lead_view_form_cascada" model="ir.ui.view">
+        <field name="name">crm.lead.form.cascada</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='internal_notes']" position="before">
+                <page string="Datos de la obra" name="work_data">
+                    <group>
+                        <group>
+                            <field name="work_address" placeholder="p. ej. Calle Mayor 12, 3º B"/>
+                            <field name="property_type"/>
+                            <field name="work_surface"/>
+                            <field name="work_type"/>
+                        </group>
+                        <group>
+                            <field name="company_currency" invisible="1"/>
+                            <field name="estimated_budget"/>
+                            <field name="planned_start_date"/>
+                            <field name="architect_id"/>
+                            <field name="lead_origin"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

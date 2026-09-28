@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-inherit="mail.Chatter" t-inherit-mode="extension">
+        <!-- "Registrar una nota" a la izquierda de "Enviar mensaje" -->
+        <xpath expr="//button[hasclass('o-mail-Chatter-sendMessage')]" position="before">
+            <xpath expr="//button[hasclass('o-mail-Chatter-logNote')]" position="move"/>
+        </xpath>
+        <!-- "Registrar una nota" es el botón primario por defecto -->
+        <xpath expr="//button[hasclass('o-mail-Chatter-logNote')]" position="attributes">
+            <attribute name="t-att-class">{
+                'btn-primary': state.composerType !== 'message',
+                'btn-secondary': state.composerType === 'message',
+                'active': state.composerType === 'note',
+                'my-2': !props.compactHeight
+            }</attribute>
+        </xpath>
+        <xpath expr="//button[hasclass('o-mail-Chatter-sendMessage')]" position="attributes">
+            <attribute name="t-att-class">{
+                'btn-primary active': state.composerType === 'message',
+                'btn-secondary': state.composerType !== 'message',
+                'my-2': !props.compactHeight
+            }</attribute>
+        </xpath>
+    </t>
+
+</templates>
